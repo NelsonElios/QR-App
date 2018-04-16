@@ -29,11 +29,12 @@ export class ScanPage {
       this.barScan.scan().then(
         (data) => {
           this.scanInfo = data.text;
-          this.navCtrl.push(InfosFormPage);
+          this.navCtrl.push(InfosFormPage,this.scanInfo);
         },(error) => {
           alert('impossible de faire le scan precision'+ error);
         }
       )
-  return this.scanInfo;
+
+  //return this.scanInfo;
   }
 }
