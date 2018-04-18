@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
 import {InfosFormPage} from "../infos-form/infos-form";
+import {ScannerProvider} from "../../providers/scanner/scanner.service";
 
 /**
  * Generated class for the ScanPage page.
@@ -18,7 +19,7 @@ import {InfosFormPage} from "../infos-form/infos-form";
 export class ScanPage {
 
   scanInfo: string;
-  constructor(public navCtrl: NavController, public navParams: NavParams,private barScan: BarcodeScanner) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,/*private barScan: BarcodeScanner*/ private scanProvider: ScannerProvider) {
   }
 
   ionViewDidLoad() {
@@ -26,15 +27,25 @@ export class ScanPage {
   }
 
   scan() {
-      this.barScan.scan().then(
+
+
+    this.scanProvider.getScanInfos().then(
+
         (data) => {
+
           this.scanInfo = data.text;
-          this.navCtrl.push(InfosFormPage,this.scanInfo);
+          this.navCtrl.push(InfosFormPage, {data: this.scanInfo})
+
         },(error) => {
           alert('impossible de faire le scan precision'+ error);
         }
-      )
+      );
 
-  //return this.scanInfo;
+
+
+
+      //this.navParams.data = this.scanInfo;
   }
+  //return this.scanInfo;
+
 }

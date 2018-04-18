@@ -13,6 +13,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import {ScanPage} from "../pages/scan/scan";
 import {InfosFormPage} from "../pages/infos-form/infos-form";
 import {BarcodeScanner} from "@ionic-native/barcode-scanner";
+import { ScannerProvider } from '../providers/scanner/scanner.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import {BarcodeScanner} from "@ionic-native/barcode-scanner";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    BarcodeScanner
+    BarcodeScanner,
+    ScannerProvider
   ]
 })
 export class AppModule {}

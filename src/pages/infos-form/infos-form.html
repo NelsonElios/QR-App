@@ -15,9 +15,34 @@
 
 <ion-content padding>
 
-  <ion-card *ngIf="infoScanned">
-    <ion-card-content>
+  <form class="infosForm">
 
+    <ion-item>
+      <ion-label float-left> Nom</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label float-left> Prénom </ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label float-left> Email </ion-label>
+      <ion-input type="Email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label float> Commentaires </ion-label>
+      <ion-textarea type="text" col-3="5" ></ion-textarea>
+    </ion-item>
+
+  </form>
+
+  <ion-card class="infoCard" >
+    <ion-card-content>
+      {{informations}}
     </ion-card-content>
   </ion-card>
 
